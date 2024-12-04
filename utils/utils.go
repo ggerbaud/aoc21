@@ -85,6 +85,13 @@ func Equals[T comparable](s1, s2 []T) bool {
 	return true
 }
 
+func AddToMapOfSlice[K comparable, V interface{}](m map[K][]V, key K, value V) {
+	if _, ok := m[key]; !ok {
+		m[key] = make([]V, 0)
+	}
+	m[key] = append(m[key], value)
+}
+
 func CheckErrorP(err error) {
 	if err != nil {
 		panic(err)
